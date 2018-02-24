@@ -4,11 +4,8 @@ import {
     render,
     Window,
     App,
-    Button,
     TextInput,
     Menu,
-    Box,
-    Picker,
     Form
 } from 'proton-native';
 
@@ -16,9 +13,11 @@ import {
 class Example extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-           
-        };
+        this.state = {};
+    }
+
+    _inputChanged = (event) => {
+
     }
 
     render() {
@@ -29,10 +28,18 @@ class Example extends Component {
                     <Menu.Item onClicked={process.exit}>Save</Menu.Item>
                     <Menu.Item onClicked={process.exit}>Exit</Menu.Item>
                 </Menu>
-                <Window margined={true} title="Order A Pizza" height={300} width={500}>
+                <Menu label="Edit">
+                    <Menu.Item onClicked={process.exit}>Undo</Menu.Item>
+                    <Menu.Item onClicked={process.exit}>Redo</Menu.Item>
+                 </Menu>
+                <Menu label="Preferences">
+                    <Menu.Item onClicked={process.exit}>Light Theme</Menu.Item>
+                    <Menu.Item onClicked={process.exit}>Dark Theme</Menu.Item>
+                </Menu>
+                <Window title="Code Editor" height={300} width={1200}>
                     <Box stretchy={false} padded={true}>
-                        <Form padded={true}>
-                            <TextInput onChanged={this._notesChanged} stretchy={true} multiline={true} label="Notes"/>
+                        <Form>
+                            <TextInput onChanged={this._inputChanged} stretchy={true} multiline={true}/>
                         </Form>
                     </Box>
                 </Window>

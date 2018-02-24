@@ -9,7 +9,8 @@ import {
     Menu,
     Box,
     Picker,
-    Form
+    Form,
+    Group
 } from 'proton-native';
 
 const SIZE_OPTIONS = {
@@ -64,25 +65,27 @@ class Example extends Component {
                     <Menu.Item onClicked={process.exit}>Exit</Menu.Item>
                 </Menu>
                 <Window margined={true} title="Order A Pizza" height={300} width={300}>
-                    <Box stretchy={false} padded={true}>
-                        <Form padded={true}>
-                            <TextInput onChanged={this._nameChanged} stretchy={false} label="Name"/>
-                            <Picker onSelected={this._sizeSelected} stretchy={false} label="Size">
-                                <Picker.Item>Small</Picker.Item>
-                                <Picker.Item>Medium</Picker.Item>
-                                <Picker.Item>Large</Picker.Item>
-                            </Picker>
-                            <Picker onSelected={this._toppingSelected} stretchy={false} label="Topping">
-                                <Picker.Item>Bacon</Picker.Item>
-                                <Picker.Item>Pepperoni</Picker.Item>
-                                <Picker.Item>Sausage</Picker.Item>
-                            </Picker>
-                            <TextInput onChanged={this._notesChanged} stretchy={true} multiline={true} label="Notes"/>
-                        </Form>
-                        <Button stretchy={false} onClicked={this._orderPizza}>
-                            Order Pizza
-                        </Button>
-                    </Box>
+                    <Group title="Order A Pizza" margined={true}>
+                        <Box stretchy={false} padded={true}>
+                            <Form padded={true}>
+                                <TextInput onChanged={this._nameChanged} stretchy={false} label="Name"/>
+                                <Picker onSelected={this._sizeSelected} stretchy={false} label="Size">
+                                    <Picker.Item>Small</Picker.Item>
+                                    <Picker.Item>Medium</Picker.Item>
+                                    <Picker.Item>Large</Picker.Item>
+                                </Picker>
+                                <Picker onSelected={this._toppingSelected} stretchy={false} label="Topping">
+                                    <Picker.Item>Bacon</Picker.Item>
+                                    <Picker.Item>Pepperoni</Picker.Item>
+                                    <Picker.Item>Sausage</Picker.Item>
+                                </Picker>
+                                <TextInput onChanged={this._notesChanged} stretchy={true} label="Notes"/>
+                            </Form>
+                            <Button stretchy={false} onClicked={this._orderPizza}>
+                                Order Pizza
+                            </Button>
+                        </Box>
+                    </Group>
                 </Window>
             </App>
         );

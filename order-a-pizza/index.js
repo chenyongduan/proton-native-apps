@@ -62,26 +62,26 @@ class Example extends Component {
         return (
             <App>
                 <Menu label="File">
-                    <Menu.Item onClicked={process.exit}>Exit</Menu.Item>
+                    <Menu.Item onClick={process.exit}>Exit</Menu.Item>
                 </Menu>
                 <Window margined={true} title="Order A Pizza" height={300} width={300}>
                     <Group title="Order A Pizza" margined={true}>
                         <Box stretchy={false} padded={true}>
                             <Form padded={true}>
-                                <TextInput onChanged={this._nameChanged} stretchy={false} label="Name"/>
-                                <Picker onSelected={this._sizeSelected} stretchy={false} label="Size">
+                                <TextInput onChange={this._nameChanged} stretchy={false} label="Name"/>
+                                <Picker onSelect={this._sizeSelected} stretchy={false} label="Size">
                                     <Picker.Item>Small</Picker.Item>
                                     <Picker.Item>Medium</Picker.Item>
                                     <Picker.Item>Large</Picker.Item>
                                 </Picker>
-                                <Picker onSelected={this._toppingSelected} stretchy={false} label="Topping">
+                                <Picker onSelect={this._toppingSelected} stretchy={false} label="Topping">
                                     <Picker.Item>Bacon</Picker.Item>
                                     <Picker.Item>Pepperoni</Picker.Item>
                                     <Picker.Item>Sausage</Picker.Item>
                                 </Picker>
-                                <TextInput onChanged={this._notesChanged} stretchy={true} label="Notes"/>
+                                <TextInput onChange={this._notesChanged} multiline={true} stretchy={true} label="Notes"/>
                             </Form>
-                            <Button stretchy={false} onClicked={this._orderPizza}>
+                            <Button stretchy={false} onClick={this._orderPizza}>
                                 Order Pizza
                             </Button>
                         </Box>

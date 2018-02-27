@@ -6,42 +6,53 @@ import {
     App,
     TextInput,
     Menu,
-    Form
+    Form,
+    Dialog,
+    Button,Box,Group,Tab 
 } from 'proton-native';
 
 
 class Example extends Component {
     constructor(props) {
         super(props);
-        this.state = {};
+        this.state = {
+            tabs: [
+                {key: 0,label: 'untitled'}
+            ]
+        };
     }
 
     _inputChanged = (event) => {
 
     }
 
+    _addTab = (event) => {
+        let tabs = this.state.tabs;
+        tabs.push({key: 1, label: 'untitled'});
+        this.setState({ tabs: tabs });
+    }
+
     render() {
         return (
             <App>
-                <Menu label="File">
-                    <Menu.Item onClicked={process.exit}>Open</Menu.Item>
-                    <Menu.Item onClicked={process.exit}>Save</Menu.Item>
-                    <Menu.Item onClicked={process.exit}>Exit</Menu.Item>
+            <Menu label="File">
+                    <Menu.Item onClick={process.exit}>Open</Menu.Item>
+                    <Menu.Item onClick={process.exit}>Save</Menu.Item>
+                    <Menu.Item onClick={this._addTab}>New Tab</Menu.Item>
+                    <Menu.Item onClick={process.exit}>Exit</Menu.Item>
                 </Menu>
                 <Menu label="Edit">
-                    <Menu.Item onClicked={process.exit}>Undo</Menu.Item>
-                    <Menu.Item onClicked={process.exit}>Redo</Menu.Item>
+                    <Menu.Item onClick={process.exit}>Undo</Menu.Item>
+                    <Menu.Item onClick={process.exit}>Redo</Menu.Item>
                  </Menu>
-                <Menu label="Preferences">
-                    <Menu.Item onClicked={process.exit}>Light Theme</Menu.Item>
-                    <Menu.Item onClicked={process.exit}>Dark Theme</Menu.Item>
-                </Menu>
-                <Window title="Code Editor" height={300} width={1200}>
-                    <Box stretchy={false} padded={true}>
-                        <Form>
-                            <TextInput onChanged={this._inputChanged} stretchy={true} multiline={true}/>
-                        </Form>
-                    </Box>
+                <Window title="Code Editor" size={{h:600,w:800}}>
+                    <Form>
+                        <Tab>
+                        {
+                            this.state.tabs.map((tab) => <TextInput key={tab.key} stretchy={true} multiline={true} onChange={this._inputChanged} label="untitled" />)
+                        }
+                        </Tab>
+                    </Form>
                 </Window>
             </App>
         );
